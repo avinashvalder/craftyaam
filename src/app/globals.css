@@ -1,0 +1,71 @@
+@import "tailwindcss";
+
+/* Base styles for body with muted background color */
+body {
+  background-color: #fffdf6; /* Muted background from mango palette */
+  color: #102a43; /* Ink color for text */
+  font-family: var(--font-sans, system-ui, sans-serif);
+  line-height: 1.6;
+}
+
+/* Focus-visible styles with 2px solid outline for accessibility */
+*:focus-visible {
+  outline: 2px solid #f9c74f; /* Mango yellow outline */
+  outline-offset: 2px;
+}
+
+/* Custom CSS for reduced motion media query overrides */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* src/app/globals.css (or any CSS entrypoint) */
+@import "tailwindcss";
+
+@theme {
+  /* ── Colors ───────────────────────────────────── */
+
+  --color-text-ink: #102a43;
+  --color-mango-yellow: #f9c74f;
+  --color-mango-flesh: #f7b801;
+  --color-mango: var(--color-mango-yellow); /* DEFAULT */
+
+  --color-leaf-green: #43aa8b;
+  --color-leaf-deep: #2f6e4e;
+  --color-leaf: var(--color-leaf-green); /* DEFAULT */
+
+  --color-accent-orange: #f9844a;
+  --color-accent: var(--color-accent-orange); /* DEFAULT */
+
+  --color-ink: #102a43;
+  --color-muted: #fffdf6;
+
+  /* ── Font Sizes (with line-height) ───────────────────── */
+  --font-size-hero: clamp(3rem, 8vw, 6rem);
+  --line-height-hero: 1.1;
+
+  --font-size-tagline: clamp(1.25rem, 3vw, 1.75rem);
+  --line-height-tagline: 1.4;
+
+  --font-size-body: 1rem;
+  --line-height-body: 1.6;
+
+  --font-size-small: 0.875rem;
+  --line-height-small: 1.5;
+
+  /* ── Background Gradients ────────────────────────────── */
+  --bg-gradient-mango: linear-gradient(to bottom right, #f9c74f, #43aa8b);
+}
+
+@layer utilities {
+  .bg-gradient-mango {
+    background-image: var(--bg-gradient-mango);
+  }
+}
