@@ -17,7 +17,7 @@ interface FormState {
   message: string;
 }
 
-export const EmailForm: React.FC<EmailFormProps> = ({ onSuccess, onError }) => {
+export const EmailForm: React.FC<EmailFormProps> = ({}) => {
   const [formState, setFormState] = useState<FormState>({
     email: "",
     status: "idle",
@@ -45,48 +45,33 @@ export const EmailForm: React.FC<EmailFormProps> = ({ onSuccess, onError }) => {
       return;
     }
 
-    // Clear any previous errors
     setValidationErrors([]);
 
-    // Set submitting state
     setFormState((prev) => ({ ...prev, status: "submitting" }));
-
     try {
-      // Simulate API call (replace with actual API endpoint)
-      await new Promise((resolve, reject) => {
-        setTimeout(() => {
-          // Simulate success (90% success rate for demo)
-          if (Math.random() > 0.1) {
-            resolve({ success: true });
-          } else {
-            reject(new Error("Network error"));
-          }
-        }, 1500);
+      const res = await fetch("/api/notify", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email: formState.email }),
       });
 
-      // Success
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.error || "Unknown error");
+
       setFormState({
         email: "",
         status: "success",
-        message: "Thanks! We'll notify you when we launch.",
+        message: "Thanks! We’ve added you to the list 🎉",
       });
       setShowToast(true);
-
-      if (onSuccess) {
-        onSuccess(formState.email);
-      }
     } catch (error) {
-      // Error
-      setFormState((prev) => ({
-        ...prev,
+      console.error("Notify form error:", error);
+      setFormState({
+        ...formState,
         status: "error",
         message: "Something went wrong. Please try again.",
-      }));
+      });
       setShowToast(true);
-
-      if (onError) {
-        onError(error instanceof Error ? error.message : "Unknown error");
-      }
     }
   };
 
