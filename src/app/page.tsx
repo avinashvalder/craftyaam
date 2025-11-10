@@ -96,7 +96,7 @@ export default function Home() {
             >
               {/* Icon Logo */}
               <motion.div
-                className="w-20 h-20 sm:w-24 sm:h-24"
+                className="w-32 h-32 sm:w-40 sm:h-40"
                 whileHover={{ scale: 1.05, rotate: 5 }}
                 transition={{ type: "spring", stiffness: 300 }}
               >
@@ -106,19 +106,19 @@ export default function Home() {
                   width={96}
                   height={96}
                   priority
-                  className="w-full h-auto drop-shadow-lg"
+                  className="w-full h-auto"
                 />
               </motion.div>
 
               {/* Text Logo */}
-              <div className="w-[280px] sm:w-[380px] md:w-[450px] lg:w-[520px]">
+              <div className="w-[280px] sm:w-[380px] md:w-[400px]">
                 <Image
                   src="/Logo_Text.svg"
                   alt="CraftyAam"
                   width={520}
                   height={91}
                   priority
-                  className="w-full h-auto drop-shadow-md"
+                  className="w-full h-auto"
                 />
               </div>
             </motion.div>
