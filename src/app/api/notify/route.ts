@@ -29,13 +29,12 @@ export async function POST(request: Request) {
         <div style="font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #222; padding: 1.5em;">
           <h2 style="color: #f4a300; margin-bottom: 0.3em;">Hey there, welcome to CraftyAam!</h2>
           <p style="margin: 0.8em 0;">
-            CraftyAam is a creative web development studio, where sharp code meets juicy ideas. 
-            We build digital experiences as fresh and unforgettable as mango season. 🥭
+            CraftyAam is a creative web development studio where sharp code meets juicy ideas. We're a freelance collective crafting digital experiences that stand out.
           </p>
           <p style="margin: 0.8em 0;">
             We'll get back to you soon.
           </p>
-          <p style="margin-top: 1.5em;">Stay tuned (and stay juicy) 💛<br><strong>— Team CraftyAam</strong></p>
+          <p style="margin-top: 1.5em;">Stay tuned (and stay juicy)🥭<br><strong>— Team CraftyAam</strong></p>
         </div>
       `,
     });

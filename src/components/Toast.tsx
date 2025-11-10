@@ -67,7 +67,7 @@ export const Toast: React.FC<ToastProps> = ({
         <div
           className={`flex items-start gap-3 p-4 rounded-lg border-l-4 shadow-lg ${config.bgColor} ${config.borderColor}`}
         >
-          <Icon className={`flex-shrink-0 w-5 h-5 mt-0.5 ${config.iconColor}`} aria-hidden="true" />
+          <Icon className={`shrink-0 w-5 h-5 mt-0.5 ${config.iconColor}`} aria-hidden="true" />
           
           <p className={`flex-1 text-sm font-medium ${config.textColor}`}>
             {message}
@@ -75,7 +75,7 @@ export const Toast: React.FC<ToastProps> = ({
           
           <button
             onClick={onClose}
-            className={`flex-shrink-0 p-1 rounded-md transition-colors duration-200 hover:bg-black/10 focus:outline-none focus:ring-2 focus:ring-offset-2 ${config.iconColor}`}
+            className={`shrink-0 p-1 rounded-md transition-colors duration-200 hover:bg-black/10 focus:outline-none focus:ring-2 focus:ring-offset-2 ${config.iconColor}`}
             aria-label="Close notification"
           >
             <X className="w-4 h-4" aria-hidden="true" />

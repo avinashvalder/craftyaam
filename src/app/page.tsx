@@ -3,8 +3,8 @@
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { Github, Linkedin } from "lucide-react";
+import { EmailForm } from "~/components/EmailForm";
 
-import { EmailForm } from "@/components/EmailForm";
 
 export default function Home() {
   const currentYear = new Date().getFullYear();

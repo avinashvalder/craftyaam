@@ -1,6 +1,8 @@
 import type { Metadata, Viewport } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
+import GoogleAnalyticsScript from "~/components/GoogleAnalyticsScript";
+import MicrosoftClarity from "~/components/MicrosoftClarity";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -9,11 +11,26 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "CraftyAam - Crafted like an Aam | Coming Soon",
-  description: "We're crafting delightful web experiences with a mango-inspired touch. Join our launch notification list.",
+  title: "CraftyAam — Crafted Like an Aam",
+  description:
+    "CraftyAam is a creative web development studio where sharp code meets juicy ideas. We're a freelance collective crafting digital experiences that stand out.",
+  keywords: [
+    "CraftyAam",
+    "web development studio",
+    "creative agency",
+    "freelance web design",
+    "startup website design",
+    "custom websites",
+    "India web studio",
+  ],
+  authors: [{ name: "CraftyAam", url: "https://craftyaam.com" }],
+  creator: "CraftyAam",
+  publisher: "CraftyAam",
+  metadataBase: new URL("https://craftyaam.com"),
   openGraph: {
-    title: "CraftyAam - Crafted like an Aam",
-    description: "Delightful web experiences launching soon",
+    title: "CraftyAam — Crafted Like an Aam",
+    description:
+      "CraftyAam is a creative web development studio where sharp code meets juicy ideas. We're a freelance collective crafting digital experiences that stand out.",
     url: "https://craftyaam.com",
     siteName: "CraftyAam",
     images: [
@@ -21,6 +38,7 @@ export const metadata: Metadata = {
         url: "https://craftyaam.com/og-image.png",
         width: 1200,
         height: 630,
+        alt: "CraftyAam - Crafted Like an Aam",
       },
     ],
     locale: "en_US",
@@ -28,19 +46,30 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "CraftyAam - Crafted like an Aam",
-    description: "Delightful web experiences launching soon",
+    title: "CraftyAam — Crafted Like an Aam",
+    description:
+      "CraftyAam is a creative web development studio where sharp code meets juicy ideas. We’re a freelance collective crafting digital experiences that stand out.",
     images: ["https://craftyaam.com/og-image.png"],
+    // creator: "@craftyaam", // optional if you have a handle
   },
   icons: {
     icon: "/favicon.ico",
+    shortcut: "/favicon.ico",
     apple: "/apple-touch-icon.png",
   },
   manifest: "/site.webmanifest",
+  category: "technology",
+  alternates: {
+    canonical: "https://craftyaam.com",
+  },
 };
 
 export const viewport: Viewport = {
   themeColor: "#F9C74F",
+  colorScheme: "light",
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 1,
 };
 
 export default function RootLayout({
@@ -52,6 +81,8 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${inter.variable} antialiased`}>
         {children}
+        <GoogleAnalyticsScript />
+        <MicrosoftClarity />
       </body>
     </html>
   );
