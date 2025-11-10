@@ -13,7 +13,7 @@ const inter = Inter({
 export const metadata: Metadata = {
   title: "CraftyAam — Crafted Like an Aam",
   description:
-    "CraftyAam is a creative web development studio where sharp code meets juicy ideas. We're a freelance collective crafting digital experiences that stand out.",
+    "CraftyAam is a creative tech studio where sharp code meets juicy ideas. We craft delightful digital experiences that stand out, spark engagement, and leave a lasting flavour.",
   keywords: [
     "CraftyAam",
     "web development studio",
@@ -30,7 +30,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "CraftyAam — Crafted Like an Aam",
     description:
-      "CraftyAam is a creative web development studio where sharp code meets juicy ideas. We're a freelance collective crafting digital experiences that stand out.",
+      "CraftyAam is a creative tech studio where sharp code meets juicy ideas. We craft delightful digital experiences that stand out, spark engagement, and leave a lasting flavour.",
     url: "https://craftyaam.com",
     siteName: "CraftyAam",
     images: [
@@ -48,7 +48,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "CraftyAam — Crafted Like an Aam",
     description:
-      "CraftyAam is a creative web development studio where sharp code meets juicy ideas. We’re a freelance collective crafting digital experiences that stand out.",
+      "CraftyAam is a creative tech studio where sharp code meets juicy ideas. We craft delightful digital experiences that stand out, spark engagement, and leave a lasting flavour.",
     images: ["https://craftyaam.com/og-image.png"],
     // creator: "@craftyaam", // optional if you have a handle
   },

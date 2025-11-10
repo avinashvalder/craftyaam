@@ -40,7 +40,8 @@ export async function POST(request: Request) {
         <div style="font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #222; padding: 1.5em;">
           <h2 style="color: #f4a300; margin-bottom: 0.3em;">Hey there, welcome to CraftyAam!</h2>
           <p style="margin: 0.8em 0;">
-            CraftyAam is a creative web development studio where sharp code meets juicy ideas. We're a freelance collective crafting digital experiences that stand out.
+            CraftyAam is a creative tech studio where sharp code meets juicy ideas.
+We craft delightful digital experiences that stand out, spark engagement, and leave a lasting flavour.
           </p>
           <p style="margin: 0.8em 0;">
             We'll get back to you soon.
