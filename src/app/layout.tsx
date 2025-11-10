@@ -1,7 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
-import GoogleAnalyticsScript from "~/components/GoogleAnalyticsScript";
 import MicrosoftClarity from "~/components/MicrosoftClarity";
 
 const inter = Inter({
@@ -81,7 +80,6 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${inter.variable} antialiased`}>
         {children}
-        <GoogleAnalyticsScript />
         <MicrosoftClarity />
       </body>
     </html>
