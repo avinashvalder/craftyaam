@@ -5,7 +5,6 @@ import { motion } from "framer-motion";
 import { Github, Linkedin } from "lucide-react";
 import { EmailForm } from "~/components/EmailForm";
 
-
 export default function Home() {
   const currentYear = new Date().getFullYear();
 
@@ -63,7 +62,7 @@ export default function Home() {
             className="w-full h-full"
           />
         </motion.div>
-        
+
         {/* Bottom Left Icon */}
         <motion.div
           className="absolute -bottom-32 -left-32 w-96 h-96 opacity-5"
@@ -110,7 +109,7 @@ export default function Home() {
                   className="w-full h-auto drop-shadow-lg"
                 />
               </motion.div>
-              
+
               {/* Text Logo */}
               <div className="w-[280px] sm:w-[380px] md:w-[450px] lg:w-[520px]">
                 <Image
@@ -127,10 +126,7 @@ export default function Home() {
             {/* Content Column */}
             <div className="flex flex-col items-center gap-8 sm:gap-10 w-full max-w-xl">
               {/* Descriptive Text */}
-              <motion.div
-                className="space-y-3"
-                variants={itemVariants}
-              >
+              <motion.div className="space-y-3" variants={itemVariants}>
                 <p className="text-ink/90 text-lg sm:text-xl lg:text-2xl font-medium">
                   Crafting delightful web experiences
                 </p>
@@ -153,7 +149,7 @@ export default function Home() {
                 variants={formSocialVariants}
               >
                 <a
-                  href="https://github.com"
+                  href="https://github.com/nigelperis"
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="GitHub"
@@ -162,7 +158,7 @@ export default function Home() {
                   <Github className="w-6 h-6" />
                 </a>
                 <a
-                  href="https://linkedin.com"
+                  href="https://www.linkedin.com/in/nigel-peris-205701221"
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="LinkedIn"
