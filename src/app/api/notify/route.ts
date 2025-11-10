@@ -14,11 +14,22 @@ export async function POST(request: Request) {
     await resend.emails.send({
       from: "CraftyAam <notify@craftyaam.com>",
       to: "craftyaam@gmail.com",
-      subject: "New Notify Me Signup",
+      subject: "New subscriber on CraftyAam! 🥭",
       html: `
-        <p>New user subscribed via the "Notify Me" form:</p>
-        <p><strong>${email}</strong></p>
-      `,
+    <div style="font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #222;">
+      <h2 style="color: #f4a300; margin-bottom: 0.4em;">New Notify Me Signup</h2>
+      <p style="margin: 0.6em 0;">
+        A new visitor just subscribed via the <strong>“Notify Me”</strong> form.
+      </p>
+      <p style="margin: 1em 0; font-size: 1rem;">
+        <strong>Email:</strong> ${email}
+      </p>
+      <hr style="margin: 1.2em 0; border: none; border-top: 1px solid #eee;" />
+      <p style="font-size: 0.9rem; color: #555;">
+        Sent automatically from the CraftyAam landing page.
+      </p>
+    </div>
+  `,
     });
 
     await resend.emails.send({
