@@ -2,6 +2,9 @@ import { createEnv } from '@t3-oss/env-nextjs';
 import { z } from 'zod';
 
 export const env = createEnv({
+  server: {
+    RESEND_API_KEY: z.string().optional(),
+  },
   client: {
     NEXT_PUBLIC_MODE: z.enum(['staging', 'production']).optional(),
     NEXT_PUBLIC_GOOGLE_ANALYTICS: z.string().optional(),
