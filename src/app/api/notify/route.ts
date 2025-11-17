@@ -1,15 +1,55 @@
+import { resolveMx } from "dns/promises";
 import { NextResponse } from "next/server";
 import { Resend } from "resend";
 
-const resend = new Resend(process.env.RESEND_API_KEY);
+import { env } from "~/env";
+import { validateEmail } from "~/lib/utils";
+
+async function domainHasMxRecords(domain: string): Promise<boolean> {
+  if (!domain) {
+    return false;
+  }
+
+  try {
+    const records = await resolveMx(domain);
+    return Array.isArray(records) && records.length > 0;
+  } catch {
+    return false;
+  }
+}
+
+function getResendClient() {
+  const apiKey = env.RESEND_API_KEY;
+  if (!apiKey) {
+    throw new Error("RESEND_API_KEY is not configured");
+  }
+  return new Resend(apiKey);
+}
 
 export async function POST(request: Request) {
   try {
     const { email } = await request.json();
+    const normalizedEmail = typeof email === "string" ? email.trim() : "";
+    const validation = validateEmail(normalizedEmail);
 
-    if (!email || !email.includes("@")) {
-      return NextResponse.json({ error: "Invalid email address" }, { status: 400 });
+    if (!validation.isValid) {
+      return NextResponse.json(
+        { error: validation.errors[0] ?? "Invalid email address" },
+        { status: 400 },
+      );
     }
+
+    const domain = normalizedEmail.split("@")[1] ?? "";
+    const hasMxRecords = await domainHasMxRecords(domain);
+
+    if (!hasMxRecords) {
+      return NextResponse.json(
+        { error: "Email domain is not accepting mail right now" },
+        { status: 400 },
+      );
+    }
+
+    const resend = getResendClient();
 
     await resend.emails.send({
       from: "CraftyAam <notify@craftyaam.com>",
@@ -22,7 +62,7 @@ export async function POST(request: Request) {
         A new visitor just subscribed via the <strong>“Notify Me”</strong> form.
       </p>
       <p style="margin: 1em 0; font-size: 1rem;">
-        <strong>Email:</strong> ${email}
+        <strong>Email:</strong> ${normalizedEmail}
       </p>
       <hr style="margin: 1.2em 0; border: none; border-top: 1px solid #eee;" />
       <p style="font-size: 0.9rem; color: #555;">
@@ -34,7 +74,7 @@ export async function POST(request: Request) {
 
     await resend.emails.send({
       from: "CraftyAam <notify@craftyaam.com>",
-      to: email,
+      to: normalizedEmail,
       subject: "Crafted like an Aam — and you're part of it!",
       html: `
         <div style="font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #222; padding: 1.5em;">
