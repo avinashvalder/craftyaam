@@ -36,7 +36,7 @@ export const Button: React.FC<ButtonProps> = ({
 
   // State modifiers
   const stateClasses =
-    "transition-all duration-200 hover:-translate-y-0.5 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-mango-yellow focus:ring-offset-2 active:translate-y-0 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:translate-y-0 disabled:hover:shadow-md";
+    "transition-all duration-200 hover:-translate-y-0.5 hover:shadow-lg focus:outline-none active:translate-y-0 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:translate-y-0 disabled:hover:shadow-md";
 
   const isDisabled = disabled || isLoading;
 

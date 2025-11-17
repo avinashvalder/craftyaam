@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { AlertCircle } from "lucide-react";
 import { Button } from "./Button";
 import { validateEmail } from "~/lib/utils";
@@ -81,6 +81,16 @@ export const EmailForm: React.FC<EmailFormProps> = ({}) => {
     }
   };
 
+  useEffect(() => {
+    if (showToast) {
+      const timer = setTimeout(() => {
+        handleCloseToast();
+      }, 4000);
+
+      return () => clearTimeout(timer);
+    }
+  }, [showToast]);
+
   return (
     <>
       <form
@@ -100,7 +110,7 @@ export const EmailForm: React.FC<EmailFormProps> = ({}) => {
               aria-describedby={
                 validationErrors.length > 0 ? "email-error" : undefined
               }
-              className={`w-full px-4 py-3 rounded-lg border-2 text-ink bg-white placeholder-ink/40 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-mango-yellow focus:ring-offset-2 ${
+              className={`w-full px-4 py-3 rounded-lg border-2 text-ink bg-white placeholder-ink/40 transition-colors duration-200 focus:outline-none ${
                 validationErrors.length > 0
                   ? "border-red-500 focus:border-red-500"
                   : "border-mango-yellow/30 focus:border-mango-yellow"
@@ -164,7 +174,7 @@ export const EmailForm: React.FC<EmailFormProps> = ({}) => {
 
             <button
               onClick={handleCloseToast}
-              className="shrink-0 p-1 rounded-md transition-colors duration-200 hover:bg-black/10 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2 text-green-500"
+              className="shrink-0 p-1 rounded-md transition-colors duration-200 hover:bg-black/10 focus:outline-none text-green-500"
               aria-label="Close notification"
             >
               <span className="sr-only">Close</span>
@@ -207,7 +217,7 @@ export const EmailForm: React.FC<EmailFormProps> = ({}) => {
 
             <button
               onClick={handleCloseToast}
-              className="shrink-0 p-1 rounded-md transition-colors duration-200 hover:bg-black/10 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2 text-red-500"
+              className="shrink-0 p-1 rounded-md transition-colors duration-200 hover:bg-black/10 focus:outline-none text-red-500"
               aria-label="Close notification"
             >
               <span className="sr-only">Close</span>

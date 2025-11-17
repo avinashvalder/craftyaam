@@ -8,11 +8,6 @@ body {
   line-height: 1.6;
 }
 
-/* Focus-visible styles with 2px solid outline for accessibility */
-*:focus-visible {
-  outline: 2px solid #f9c74f; /* Mango yellow outline */
-  outline-offset: 2px;
-}
 
 /* Custom CSS for reduced motion media query overrides */
 @media (prefers-reduced-motion: reduce) {

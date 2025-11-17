@@ -153,7 +153,7 @@ export default function Home() {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="GitHub"
-                  className="text-ink/70 hover:text-ink hover:scale-110 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-mango-yellow focus:ring-offset-2 rounded-md p-1"
+                  className="text-ink/70 hover:text-ink hover:scale-110 transition-all duration-200 focus:outline-none rounded-md p-1"
                 >
                   <Github className="w-6 h-6" />
                 </a>
@@ -162,7 +162,7 @@ export default function Home() {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="LinkedIn"
-                  className="text-ink/70 hover:text-ink hover:scale-110 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-mango-yellow focus:ring-offset-2 rounded-md p-1"
+                  className="text-ink/70 hover:text-ink hover:scale-110 transition-all duration-200 focus:outline-none rounded-md p-1"
                 >
                   <Linkedin className="w-6 h-6" />
                 </a>
