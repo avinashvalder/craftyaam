@@ -1,15 +1,155 @@
 @import "tailwindcss";
 
-/* Base styles for body with muted background color */
+@theme {
+  /* ── Organic Tech Color Palette ───────────────────────────────────── */
+
+  /* Primary: Mango Yellow/Orange (Warmth, Creativity) */
+  --color-mango-yellow: #f9c74f;
+  --color-mango-orange: #f8961e;
+  --color-mango-flesh: #f7b801;
+  --color-mango: var(--color-mango-yellow);
+
+  /* Secondary: Deep Leaf Green (Growth, Stability) */
+  --color-leaf-green: #43aa8b;
+  --color-leaf-deep: #2d6a4f;
+  --color-leaf-dark: #1b4332;
+  --color-leaf: var(--color-leaf-green);
+
+  /* Accent: Unripe Green (Hover states) */
+  --color-unripe: #90be6d;
+  --color-unripe-light: #b7ce9f;
+
+  /* Background: Soft Off-White/Cream */
+  --color-cream: #fffdf6;
+  --color-cream-dark: #faf8f0;
+
+  /* Text: Deep Ink */
+  --color-ink: #102a43;
+  --color-ink-light: #334e68;
+
+  /* ── Font Sizes ───────────────────── */
+  --font-size-hero: clamp(2.5rem, 6vw, 4.5rem);
+  --font-size-section: clamp(2rem, 4vw, 3rem);
+  --font-size-xl: clamp(1.5rem, 3vw, 2rem);
+  --font-size-lg: clamp(1.125rem, 2vw, 1.5rem);
+  --font-size-base: 1rem;
+  --font-size-sm: 0.875rem;
+
+  /* ── Spacing & Borders ───────────────────── */
+  --radius-soft: 0.5rem;
+  --radius-squircle: 2rem;
+  --radius-button: 3rem;
+}
+
+/* ── Base Styles ───────────────────── */
 body {
-  background-color: #fffdf6; /* Muted background from mango palette */
-  color: #102a43; /* Ink color for text */
-  font-family: var(--font-sans, system-ui, sans-serif);
+  background-color: var(--color-cream);
+  background-image: radial-gradient(
+      circle at 10% 20%,
+      #f9c74f1a,
+      transparent 30%
+    ),
+    radial-gradient(circle at 80% 0%, #43aa8b1a, transparent 35%),
+    radial-gradient(circle at 40% 80%, #90be6d1a, transparent 32%),
+    linear-gradient(135deg, #fffdf6, #faf8f0);
+  color: var(--color-ink);
+  font-family: var(--font-heading), "Inter", system-ui, -apple-system,
+    sans-serif;
   line-height: 1.6;
 }
 
+/* ── Custom Utilities ───────────────────── */
+@layer utilities {
+  .font-heading {
+    font-family: var(--font-heading);
+  }
 
-/* Custom CSS for reduced motion media query overrides */
+  .font-mono {
+    font-family: var(--font-mono);
+  }
+
+  .text-hero {
+    font-size: var(--font-size-hero);
+    line-height: 1.1;
+  }
+
+  .text-section {
+    font-size: var(--font-size-section);
+    line-height: 1.2;
+  }
+
+  .bg-blob {
+    background: radial-gradient(
+      ellipse at center,
+      var(--color-unripe-light) 0%,
+      transparent 70%
+    );
+  }
+
+  .squircle {
+    border-radius: var(--radius-squircle);
+  }
+
+  .soft-corners {
+    border-radius: var(--radius-soft);
+  }
+
+  .glass {
+    background: rgba(255, 255, 255, 0.55);
+    border: 1px solid rgba(67, 170, 139, 0.25);
+    box-shadow: 0 30px 80px rgba(16, 42, 67, 0.12),
+      inset 0 1px 0 rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(14px);
+  }
+
+  .glow {
+    box-shadow: 0 0 0 1px rgba(67, 170, 139, 0.25),
+      0 30px 120px rgba(249, 199, 79, 0.22);
+  }
+
+  .grid-overlay {
+    background-image: linear-gradient(
+        to right,
+        rgba(16, 42, 67, 0.04) 1px,
+        transparent 1px
+      ),
+      linear-gradient(to bottom, rgba(16, 42, 67, 0.04) 1px, transparent 1px);
+    background-size: 26px 26px;
+  }
+
+  .noise {
+    position: relative;
+  }
+
+  .noise::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160' viewBox='0 0 160 160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.09'/%3E%3C/svg%3E");
+    pointer-events: none;
+    mix-blend-mode: soft-light;
+  }
+
+  .orb {
+    background: radial-gradient(
+      circle at 30% 30%,
+      #f9c74f,
+      #f8961e 45%,
+      #43aa8b 100%
+    );
+    filter: drop-shadow(0 30px 80px rgba(249, 199, 79, 0.35));
+  }
+
+  .badge-pill {
+    border-radius: 999px;
+    padding: 0.375rem 0.875rem;
+    border: 1px solid rgba(16, 42, 67, 0.08);
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(12px);
+  }
+}
+
+/* ── Reduced Motion ───────────────────── */
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
@@ -18,49 +158,5 @@ body {
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
-  }
-}
-
-/* src/app/globals.css (or any CSS entrypoint) */
-@import "tailwindcss";
-
-@theme {
-  /* ── Colors ───────────────────────────────────── */
-
-  --color-text-ink: #102a43;
-  --color-mango-yellow: #f9c74f;
-  --color-mango-flesh: #f7b801;
-  --color-mango: var(--color-mango-yellow); /* DEFAULT */
-
-  --color-leaf-green: #43aa8b;
-  --color-leaf-deep: #2f6e4e;
-  --color-leaf: var(--color-leaf-green); /* DEFAULT */
-
-  --color-accent-orange: #f9844a;
-  --color-accent: var(--color-accent-orange); /* DEFAULT */
-
-  --color-ink: #102a43;
-  --color-muted: #fffdf6;
-
-  /* ── Font Sizes (with line-height) ───────────────────── */
-  --font-size-hero: clamp(3rem, 8vw, 6rem);
-  --line-height-hero: 1.1;
-
-  --font-size-tagline: clamp(1.25rem, 3vw, 1.75rem);
-  --line-height-tagline: 1.4;
-
-  --font-size-body: 1rem;
-  --line-height-body: 1.6;
-
-  --font-size-small: 0.875rem;
-  --line-height-small: 1.5;
-
-  /* ── Background Gradients ────────────────────────────── */
-  --bg-gradient-mango: linear-gradient(to bottom right, #f9c74f, #43aa8b);
-}
-
-@layer utilities {
-  .bg-gradient-mango {
-    background-image: var(--bg-gradient-mango);
   }
 }
