@@ -110,10 +110,10 @@ export const EmailForm: React.FC<EmailFormProps> = ({}) => {
               aria-describedby={
                 validationErrors.length > 0 ? "email-error" : undefined
               }
-              className={`w-full px-4 py-3 rounded-lg border-2 text-ink bg-white placeholder-ink/40 transition-colors duration-200 focus:outline-none ${
+              className={`w-full px-5 py-3 rounded-[3rem] border-2 text-[#102a43] bg-white placeholder-[#102a43]/40 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-[#43aa8b]/30 ${
                 validationErrors.length > 0
                   ? "border-red-500 focus:border-red-500"
-                  : "border-mango-yellow/30 focus:border-mango-yellow"
+                  : "border-[#43aa8b]/30 focus:border-[#43aa8b]"
               }`}
               disabled={formState.status === "submitting"}
             />
@@ -121,13 +121,13 @@ export const EmailForm: React.FC<EmailFormProps> = ({}) => {
 
           <Button
             type="submit"
-            variant="primary"
+            variant="mango"
             size="md"
             isLoading={formState.status === "submitting"}
             disabled={formState.status === "submitting"}
             className="whitespace-nowrap sm:shrink-0"
           >
-            Notify me
+            Submit
           </Button>
         </div>
 
